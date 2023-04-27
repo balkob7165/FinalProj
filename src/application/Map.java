@@ -8,27 +8,27 @@ public class Map {
 	private boolean tree = false;
 	private boolean npc = false;
 	
-	public Map(boolean coin, boolean tree, boolean npc) {
+	public Map(boolean coin, boolean tree, boolean npc) {//new map data packet with predetermined attributes
 		coin = this.coin;
 		tree = this.tree;
 		npc = this.npc;
 	}
 	
-	public Map() {
+	public Map() {//creates new map data packet with random attributes
 		generate();
 	}
 	
 	public void generate() {
 		Random rand = new Random();
-		int odds = rand.nextInt(100);
+		int odds = rand.nextInt(100);//one number generated to fulfill only 1 if statement so only 1 entity is in the space
 		
-		if(odds>50&&odds<=70) {
+		if(odds>50&&odds<=70) {//20% chance of tree
 			tree = true;
 		}
-		if(odds>70&&odds<=80) {
+		if(odds>70&&odds<=80) {//10% chance of coin
 			coin = true;
 		}
-		if(odds>80&&odds<=90) {
+		if(odds>80&&odds<=90) {//10% chance of npc
 			npc = true;
 		}
 	}
