@@ -15,16 +15,16 @@ public class Main extends Application {
 			BorderPane root = new BorderPane();
 			
 			//adds background image
-			Image bg = new Image("C:\\Users\\GoetschCorbin\\OneDrive - University of Wisconsin-Stout\\Documents\\GitHub\\FinalProj\\FinalProj\\Grassfield.png");
-			ImageView img = new ImageView(bg);
-			root.getChildren().add(img);
+			//Image bg = new Image("C:\\Users\\GoetschCorbin\\OneDrive - University of Wisconsin-Stout\\Documents\\GitHub\\FinalProj\\FinalProj\\Grassfield.png");
+			//ImageView img = new ImageView(bg);
+			//root.getChildren().add(img);
 			
-			Scene scene = new Scene(root,400,400);
+			Scene scene = new Scene(root,600,400);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			primaryStage.setScene(scene);
 			primaryStage.show();
-			Map[][] map = new Map[10][10];
-			for(int i = 0;i<10;i++) {
+			Map[][] map = new Map[15][10];
+			for(int i = 0;i<15;i++) {
 				for(int j = 0;j<10;j++) {
 					Map mapdata = new Map();
 					map[i][j]= mapdata;
