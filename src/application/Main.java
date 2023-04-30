@@ -25,6 +25,8 @@ public class Main extends Application {
 			ImageView player1 = new ImageView(player);
 			Image tree = new Image(getClass().getResource("/Assets/TreeSprite.png").toString(), true);
 			ImageView tree1 = new ImageView(tree);
+			tree1.setX(160);
+			tree1.setY(240);
 			ImageView[] trees = new ImageView[150];
 			root.getChildren().add(tree1);
 			int numtrees = 0;
