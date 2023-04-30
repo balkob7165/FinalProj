@@ -41,13 +41,13 @@ public class Map {
 		Random rand = new Random();
 		int odds = rand.nextInt(100);//one number generated to fulfill only 1 if statement so only 1 entity is in the space
 		
-		if(odds>50&&odds<=70) {//20% chance of tree
+		if(odds>0&&odds<=15) {//15% chance of tree
 			tree = true;
 		}
-		if(odds>70&&odds<=80) {//10% chance of coin
+		if(odds>15&&odds<=25) {//10% chance of coin
 			coin = true;
 		}
-		if(odds>80&&odds<=90) {//10% chance of npc
+		if(odds>25&&odds<=30) {//5% chance of npc
 			npc = true;
 		}
 	}
