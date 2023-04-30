@@ -17,12 +17,14 @@ public class Main extends Application {
 			//adds images
 			Image bg = new Image(getClass().getResource("/Assets/Grassfield.png").toString(), true);
 			ImageView bg1 = new ImageView(bg);
+			root.getChildren().add(bg1); 
 			Image coin = new Image(getClass().getResource("/Assets/Coin.png").toString(), true);
 			ImageView coin1 = new ImageView(coin);
 			Image goblin = new Image(getClass().getResource("/Assets/Goblin.png").toString(), true);
 			ImageView goblin1 = new ImageView(goblin);
 			Image player = new Image(getClass().getResource("/Assets/Player.png").toString(), true);
 			ImageView player1 = new ImageView(player);
+			root.getChildren().add(player1);
 			Image tree = new Image(getClass().getResource("/Assets/TreeSprite.png").toString(), true);
 			ImageView tree1 = new ImageView(tree);
 			tree1.setX(160);
@@ -54,11 +56,11 @@ public class Main extends Application {
 				}
 			}
 			
-			root.getChildren().add(bg1); 
-			
+			int coins=0;
 			Scene scene = new Scene(root,480,320);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			primaryStage.setScene(scene);
+			primaryStage.setTitle("Coins:"+coins);
 			primaryStage.show();
 			
 		} catch(Exception e) {
