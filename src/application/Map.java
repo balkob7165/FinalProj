@@ -14,6 +14,25 @@ public class Map {
 		npc = this.npc;
 	}
 	
+	public boolean hasItem() {
+		if(coin||tree||npc) {
+			return true;
+		}
+		else return false;
+	}
+	
+	public boolean coin() {
+		return coin;
+	}
+	
+	public boolean tree() {
+		return tree;
+	}
+	
+	public boolean npc() {
+		return npc;
+	}
+	
 	public Map() {//creates new map data packet with random attributes
 		generate();
 	}
@@ -31,6 +50,19 @@ public class Map {
 		if(odds>80&&odds<=90) {//10% chance of npc
 			npc = true;
 		}
+	}
+	
+	public String toString() {
+		if(hasItem()) {
+			if(coin()) {
+				return "Coin";
+			}
+			if(tree()) {
+				return "Tree";
+			}
+			else return "NPC";
+		}
+		else return "Empty";
 	}
 	
 

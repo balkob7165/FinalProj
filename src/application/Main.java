@@ -25,14 +25,11 @@ public class Main extends Application {
 			ImageView player1 = new ImageView(player);
 			Image tree = new Image(getClass().getResource("/Assets/TreeSprite.png").toString(), true);
 			ImageView tree1 = new ImageView(tree);
+			ImageView[] trees = new ImageView[150];
+			root.getChildren().add(tree1);
+			int numtrees = 0;
 			
-			
-			root.getChildren().add(bg1); 
-			
-			Scene scene = new Scene(root,480,320);
-			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-			primaryStage.setScene(scene);
-			primaryStage.show();
+			//Generates Map
 			Map[][] map = new Map[15][10];
 			for(int i = 0;i<15;i++) {
 				for(int j = 0;j<10;j++) {
@@ -40,6 +37,28 @@ public class Main extends Application {
 					map[i][j]= mapdata;
 				}
 			}
+			
+			for(int i = 0;i<15;i++) {
+				for(int j = 0;j<10;j++) {
+					if(map[i][j].hasItem()) {
+						if(map[i][j].tree()) {
+							trees[numtrees]=new ImageView(tree);
+							trees[numtrees].setX(i*32);
+							trees[numtrees].setY(j*32);
+							root.getChildren().add(trees[numtrees]);
+							numtrees++;
+						}
+					}
+				}
+			}
+			
+			root.getChildren().add(bg1); 
+			
+			Scene scene = new Scene(root,480,320);
+			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+			primaryStage.setScene(scene);
+			primaryStage.show();
+			
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
