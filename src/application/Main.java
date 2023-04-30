@@ -1,11 +1,11 @@
 package application;
-	
+
 import javafx.application.Application;
-import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
+import javafx.stage.Stage;
 
 
 public class Main extends Application {
@@ -15,9 +15,10 @@ public class Main extends Application {
 			BorderPane root = new BorderPane();
 			
 			//adds background image
-			Image bg = new Image("C:\\Users\\BalkoBenjamin\\eclipse-workspace\\FinalProj\\src\\Assets\\Grassfield.png");
+			//Image bg = new Image("Assets/Grassfield.png");
+			Image bg = new Image(getClass().getResource("/Assets/Grassfield.png").toString(), true);
 			ImageView img = new ImageView(bg);
-			root.getChildren().add(img);
+			root.getChildren().add(img); 
 			
 			Scene scene = new Scene(root,600,400);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
