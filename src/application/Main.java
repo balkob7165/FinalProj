@@ -15,9 +15,9 @@ public class Main extends Application {
 			BorderPane root = new BorderPane();
 			
 			//adds background image
-			//Image bg = new Image("C:\\Users\\GoetschCorbin\\OneDrive - University of Wisconsin-Stout\\Documents\\GitHub\\FinalProj\\FinalProj\\Grassfield.png");
-			//ImageView img = new ImageView(bg);
-			//root.getChildren().add(img);
+			Image bg = new Image("C:\\Users\\BalkoBenjamin\\eclipse-workspace\\FinalProj\\src\\Assets\\Grassfield.png");
+			ImageView img = new ImageView(bg);
+			root.getChildren().add(img);
 			
 			Scene scene = new Scene(root,600,400);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
