@@ -1,36 +1,40 @@
 package application;
 
 public class Player {
+    private int x;
+    private int y;
+    private int size = 20;
 
-	private int xpos;
-	private int ypos;
-	
-	public Player() {
-		xpos=0;
-		ypos=0;
-	}
-	
-	public void moveUp() {
-		ypos--;
-	}
+    public Player(int x, int y) {
+        this.x = x;
+        this.y = y;
+    }
 
-	public void moveDown() {
-		ypos++;
-	}
+    public void moveUp() {
+        y -= 10;
+    }
 
-	public void moveLeft() {
-		xpos--;
-	}
+    public void moveDown() {
+        y += 10;
+    }
 
-	public void moveRight() {
-		xpos++;
-	}
-	
-	public int getY() {
-		return ypos;
-	}
-	
-	public int getX() {
-		return xpos;
-	}
+    public void moveLeft() {
+        x -= 10;
+    }
+
+    public void moveRight() {
+        x += 10;
+    }
+
+    public int getX() {
+        return x;
+    }
+
+    public int getY() {
+        return y;
+    }
+
+    public int getSize() {
+        return size;
+    }
 }
