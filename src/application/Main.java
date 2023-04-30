@@ -82,6 +82,23 @@ public class Main extends Application {
 			
 			int coinscollected=0;
 			Scene scene = new Scene(root,480,320);
+			
+			scene.setOnKeyPressed(event -> {
+	            switch (event.getCode()) {
+	                case UP:
+	                    player.moveUp();
+	                    break;
+	                case DOWN:
+	                    player.moveDown();
+	                    break;
+	                case LEFT:
+	                    player.moveLeft();
+	                    break;
+	                case RIGHT:
+	                    player.moveRight();
+	                    break;
+	            }
+	        });
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			primaryStage.setScene(scene);
 			primaryStage.setTitle("Coins: "+coinscollected);
