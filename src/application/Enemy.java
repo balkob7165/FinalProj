@@ -13,5 +13,17 @@ public class Enemy {
 
 	public void enemyMove() {
 		Random random = new Random();
+		 int dx = random.nextInt(3) - 1;
+	     int dy = random.nextInt(3) - 1;
+	     x += dx;
+	     y += dy;
+	}
+	
+	public int getXCoord() {
+		return x;
+	}
+	
+	public int getYCoord() {
+		return y;
 	}
 }
