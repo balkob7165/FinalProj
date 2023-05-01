@@ -3,7 +3,6 @@ package application;
 public class Player {
     private int x;
     private int y;
-    private int size = 20;
 
     public Player(int x, int y) {
         this.x = x;
@@ -11,19 +10,19 @@ public class Player {
     }
 
     public void moveUp() {
-        y -= 10;
+        y -= 1;
     }
 
     public void moveDown() {
-        y += 10;
+        y += 1;
     }
 
     public void moveLeft() {
-        x -= 10;
+        x -= 1;
     }
 
     public void moveRight() {
-        x += 10;
+        x += 1;
     }
 
     public int getX() {
@@ -32,9 +31,5 @@ public class Player {
 
     public int getY() {
         return y;
-    }
-
-    public int getSize() {
-        return size;
     }
 }

@@ -30,8 +30,11 @@ public class Main extends Application {
 			int numgoblins = 0;
 			
 			//add player image
+			Player plr = new Player(0,0);
 			Image player = new Image(getClass().getResource("/Assets/Player.png").toString(), true);
 			ImageView player1 = new ImageView(player);
+			player1.setX(plr.getX()*32);
+			player1.setY(plr.getY()*32);
 			root.getChildren().add(player1);
 			
 			//adds and counts trees
@@ -86,18 +89,24 @@ public class Main extends Application {
 			scene.setOnKeyPressed(event -> {
 	            switch (event.getCode()) {
 	                case UP:
-	                    player.moveUp();
+	                    plr.moveUp();
+	                    player1.setY(plr.getY()*32);
 	                    break;
 	                case DOWN:
-	                    player.moveDown();
+	                    plr.moveDown();
+	                    player1.setY(plr.getY()*32);
 	                    break;
 	                case LEFT:
-	                    player.moveLeft();
+	                    plr.moveLeft();
+	                    player1.setX(plr.getX()*32);
 	                    break;
 	                case RIGHT:
-	                    player.moveRight();
+	                    plr.moveRight();
+	                    player1.setX(plr.getX()*32);
 	                    break;
 	            }
+	            primaryStage.setScene(scene);
+	            primaryStage.show();
 	        });
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			primaryStage.setScene(scene);
