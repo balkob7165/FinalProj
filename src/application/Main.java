@@ -9,6 +9,22 @@ import javafx.stage.Stage;
 
 
 public class Main extends Application {
+	
+	public boolean checkColision(Player x, Map[][] map,int coins) {
+		if(map[x.getX()][x.getY()].coin()) {
+			map[x.getX()][x.getY()].collectCoin();
+			coins++;
+			return true;
+		}
+		if(map[x.getX()][x.getY()].npc()) {
+			return false;
+		}
+		if(map[x.getX()][x.getY()].tree()) {
+			return false;
+		}
+		return true;
+	}
+	
 	@Override
 	public void start(Stage primaryStage) {
 		try {
@@ -86,23 +102,33 @@ public class Main extends Application {
 			int coinscollected=0;
 			Scene scene = new Scene(root,480,320);
 			
+			//reacts to button press and moves character
 			scene.setOnKeyPressed(event -> {
 	            switch (event.getCode()) {
 	                case UP:
+	                	if(checkColision(plr,map,coinscollected)) {
 	                    plr.moveUp();
 	                    player1.setY(plr.getY()*32);
+	                    checkColision(plr,map,coinscollected);
+	                	}
 	                    break;
 	                case DOWN:
+	                	if(checkColision(plr,map,coinscollected)) {
 	                    plr.moveDown();
 	                    player1.setY(plr.getY()*32);
+	                	}
 	                    break;
 	                case LEFT:
+	                	if(checkColision(plr,map,coinscollected)) {
 	                    plr.moveLeft();
 	                    player1.setX(plr.getX()*32);
+	                	}
 	                    break;
 	                case RIGHT:
+	                	if(checkColision(plr,map,coinscollected)) {
 	                    plr.moveRight();
 	                    player1.setX(plr.getX()*32);
+	                    }
 	                    break;
 	            }
 	            primaryStage.setScene(scene);

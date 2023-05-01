@@ -25,6 +25,10 @@ public class Map {
 		return coin;
 	}
 	
+	public void collectCoin() {
+		coin = false;
+	}
+	
 	public boolean tree() {
 		return tree;
 	}
