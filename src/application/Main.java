@@ -150,12 +150,12 @@ public class Main extends Application {
 	                    break;
 	            }
 	            primaryStage.setScene(scene);
-	            primaryStage.setTitle("Coins: "+coinscollected);
+	            primaryStage.setTitle("Coins: "+(map[0][0].getTotalCoins()));
 	            primaryStage.show();
 	        });
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			primaryStage.setScene(scene);
-			primaryStage.setTitle("Coins: "+coinscollected);
+			primaryStage.setTitle("Coins: "+map[0][0].getTotalCoins());
 			primaryStage.show();
 			
 		} catch(Exception e) {
