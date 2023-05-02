@@ -6,20 +6,27 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 
 
 public class Main extends Application {
 	
-	public boolean checkColision(Player x, Map[][] map,int coins) {
-		if(map[x.getX()][x.getY()].coin()) {
-			map[x.getX()][x.getY()].collectCoin();
-			coins++;
+	public boolean checkColision(Player z, Map[][] map,ImageView[] coins,int coin,int x,int y,BorderPane root) {
+		if(map[z.getX()+x][z.getY()+y].coin()) {
+			map[z.getX()+x][z.getY()+y].collectCoin();
+			System.out.println("Coins"+coin);
+			coin++;
+			root.getChildren().remove(coins[map[z.getX()+x][z.getY()+y].getImgNum()]);
 			return true;
 		}
-		if(map[x.getX()][x.getY()].npc()) {
+		if(map[z.getX()+x][z.getY()+y].npc()) {
+			Alert gameover = new Alert(AlertType.INFORMATION,"Game Over");
+			gameover.showAndWait();
+			System.exit(0);
 			return false;
 		}
-		if(map[x.getX()][x.getY()].tree()) {
+		if(map[z.getX()+x][z.getY()+y].tree()) {
 			return false;
 		}
 		return true;
@@ -39,6 +46,7 @@ public class Main extends Application {
 			Image coin = new Image(getClass().getResource("/Assets/Coin.png").toString(), true);
 			ImageView[] coins = new ImageView[150];
 			int numcoins = 0;
+			int coinscollected=0;
 			
 			//adds and counts goblins
 			Image goblin = new Image(getClass().getResource("/Assets/Goblin.png").toString(), true);
@@ -80,6 +88,7 @@ public class Main extends Application {
 							trees[numtrees].setX(i*32);
 							trees[numtrees].setY(j*32);
 							root.getChildren().add(trees[numtrees]);
+							map[i][j].setImgNum(numtrees);
 							numtrees++;
 						}
 						if(map[i][j].npc()) {
@@ -87,6 +96,7 @@ public class Main extends Application {
 							goblins[numgoblins].setX(i*32);
 							goblins[numgoblins].setY(j*32);
 							root.getChildren().add(goblins[numgoblins]);
+							map[i][j].setImgNum(numgoblins);
 							numgoblins++;
 						}
 						if(map[i][j].coin()) {
@@ -94,44 +104,44 @@ public class Main extends Application {
 							coins[numcoins].setX(i*32);
 							coins[numcoins].setY(j*32);
 							root.getChildren().add(coins[numcoins]);
+							map[i][j].setImgNum(numcoins);
 							numcoins++;
 						}
 					}
 				}
 			
-			int coinscollected=0;
 			Scene scene = new Scene(root,480,320);
 			
 			//reacts to button press and moves character
 			scene.setOnKeyPressed(event -> {
 	            switch (event.getCode()) {
 	                case UP:
-	                	if(checkColision(plr,map,coinscollected)) {
+	                	if(checkColision(plr,map,coins,coinscollected,0,-1,root)) {
 	                    plr.moveUp();
 	                    player1.setY(plr.getY()*32);
-	                    checkColision(plr,map,coinscollected);
 	                	}
 	                    break;
 	                case DOWN:
-	                	if(checkColision(plr,map,coinscollected)) {
+	                	if(checkColision(plr,map,coins,coinscollected,0,1,root)) {
 	                    plr.moveDown();
 	                    player1.setY(plr.getY()*32);
 	                	}
 	                    break;
 	                case LEFT:
-	                	if(checkColision(plr,map,coinscollected)) {
+	                	if(checkColision(plr,map,coins,coinscollected,-1,0,root)) {
 	                    plr.moveLeft();
 	                    player1.setX(plr.getX()*32);
 	                	}
 	                    break;
 	                case RIGHT:
-	                	if(checkColision(plr,map,coinscollected)) {
+	                	if(checkColision(plr,map,coins,coinscollected,1,0,root)) {
 	                    plr.moveRight();
 	                    player1.setX(plr.getX()*32);
 	                    }
 	                    break;
 	            }
 	            primaryStage.setScene(scene);
+	            primaryStage.setTitle("Coins: "+coinscollected);
 	            primaryStage.show();
 	        });
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());

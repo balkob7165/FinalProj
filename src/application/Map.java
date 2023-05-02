@@ -7,6 +7,7 @@ public class Map {
 	private boolean coin = false;
 	private boolean tree = false;
 	private boolean npc = false;
+	private int imageNum;
 	
 	public Map(boolean coin, boolean tree, boolean npc) {//new map data packet with predetermined attributes
 		coin = this.coin;
@@ -35,6 +36,14 @@ public class Map {
 	
 	public boolean npc() {
 		return npc;
+	}
+	
+	public void setImgNum(int imageNum) {
+		this.imageNum=imageNum;
+	}
+	
+	public int getImgNum() {
+		return imageNum;
 	}
 	
 	public Map() {//creates new map data packet with random attributes
