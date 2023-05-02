@@ -12,11 +12,9 @@ import javafx.scene.control.Alert.AlertType;
 
 public class Main extends Application {
 	//this checks whether or not the player is going to run into something and reacts accordingly
-	public boolean checkColision(Player z, Map[][] map,ImageView[] coins,int coin,int x,int y,BorderPane root) {
+	public boolean checkColision(Player z, Map[][] map,ImageView[] coins,int x,int y,BorderPane root) {
 		if(map[z.getX()+x][z.getY()+y].coin()) {
 			map[z.getX()+x][z.getY()+y].collectCoin();
-			System.out.println("Coins "+map[0][0].getTotalCoins());
-			coin++;
 			map[0][0].setTotalCoins(map[0][0].getTotalCoins()-1);
 			root.getChildren().remove(coins[map[z.getX()+x][z.getY()+y].getImgNum()]);
 			if(map[0][0].getTotalCoins()==0) {
@@ -125,25 +123,25 @@ public class Main extends Application {
 			scene.setOnKeyPressed(event -> {
 	            switch (event.getCode()) {
 	                case UP:
-	                	if(checkColision(plr,map,coins,coinscollected,0,-1,root)) {
+	                	if(checkColision(plr,map,coins,0,-1,root)) {
 	                    plr.moveUp();
 	                    player1.setY(plr.getY()*32);
 	                	}
 	                    break;
 	                case DOWN:
-	                	if(checkColision(plr,map,coins,coinscollected,0,1,root)) {
+	                	if(checkColision(plr,map,coins,0,1,root)) {
 	                    plr.moveDown();
 	                    player1.setY(plr.getY()*32);
 	                	}
 	                    break;
 	                case LEFT:
-	                	if(checkColision(plr,map,coins,coinscollected,-1,0,root)) {
+	                	if(checkColision(plr,map,coins,-1,0,root)) {
 	                    plr.moveLeft();
 	                    player1.setX(plr.getX()*32);
 	                	}
 	                    break;
 	                case RIGHT:
-	                	if(checkColision(plr,map,coins,coinscollected,1,0,root)) {
+	                	if(checkColision(plr,map,coins,1,0,root)) {
 	                    plr.moveRight();
 	                    player1.setX(plr.getX()*32);
 	                    }
