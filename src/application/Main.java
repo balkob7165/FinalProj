@@ -11,13 +11,19 @@ import javafx.scene.control.Alert.AlertType;
 
 
 public class Main extends Application {
-	
+	//this checks whether or not the player is going to run into something and reacts accordingly
 	public boolean checkColision(Player z, Map[][] map,ImageView[] coins,int coin,int x,int y,BorderPane root) {
 		if(map[z.getX()+x][z.getY()+y].coin()) {
 			map[z.getX()+x][z.getY()+y].collectCoin();
-			System.out.println("Coins"+coin);
+			System.out.println("Coins "+map[0][0].getTotalCoins());
 			coin++;
+			map[0][0].setTotalCoins(map[0][0].getTotalCoins()-1);
 			root.getChildren().remove(coins[map[z.getX()+x][z.getY()+y].getImgNum()]);
+			if(map[0][0].getTotalCoins()==0) {
+				Alert win = new Alert(AlertType.INFORMATION,"You win!");
+				win.showAndWait();
+				System.exit(0);
+			}
 			return true;
 		}
 		if(map[z.getX()+x][z.getY()+y].npc()) {
@@ -71,7 +77,8 @@ public class Main extends Application {
 			for(int i = 0;i<15;i++) {
 				for(int j = 0;j<10;j++) {
 					if(i==0&&j==0) {
-					map[i][j] = new Map(false,false,false);	
+					map[i][j] = new Map(false,false,false);
+					map[i][j].setTotalCoins(0);
 					}
 					else {
 					Map mapdata = new Map();
@@ -106,9 +113,11 @@ public class Main extends Application {
 							root.getChildren().add(coins[numcoins]);
 							map[i][j].setImgNum(numcoins);
 							numcoins++;
+							
 						}
 					}
 				}
+			map[0][0].setTotalCoins(numcoins);
 			
 			Scene scene = new Scene(root,480,320);
 			
